@@ -1,12 +1,8 @@
 import React from 'react';
 import 'react-responsive-modal/styles.css';
 import "react-responsive-modal/styles.css";
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import DayPicker, { DateUtils } from 'react-day-picker';
+import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import { Modal } from 'react-responsive-modal';
-import { isEmpty } from "lodash";
 import { newDate, dateSortSasc } from '../../Utils'
 import './styles.scss'; 
  
@@ -25,7 +21,6 @@ export default class SessionDetails extends React.Component {
   };
 
   handleDayClick = (day, { selected })  => {
-    debugger;
     this.setState({
       selectedDay: selected ? undefined : day,
     });
@@ -39,16 +34,16 @@ export default class SessionDetails extends React.Component {
     const { modalData: { activity_periods } } = this.props
     const { day } = this.state;
     const dat = activity_periods.filter( data => new Date(data.start_time.split(" ").splice(0,3).toString()).toDateString() == new Date(day.toString()).toDateString() );
-    debugger;
     
     if( dat.length > 0 ) return (
       <div className="activityContainer">Active From:
-      <div className="startTime ">{ `Start Time: ${dat[0].start_time }` }</div>
-      <span className=" endTime ">{ `End Time: ${ dat[0].end_time }`}</span>
+      <div className="startTime">{ `Start Time: ${dat[0].start_time }` }</div>
+      <span className="endTime">{ `End Time: ${ dat[0].end_time }`}</span>
+      <hr />
       </div>
     );
     if( day !== '' ) return (
-      <div className="activityContainer">Not active today </div>
+      <div className="activityContainer">No Activity  <hr /></div>
     );
    }
  
@@ -58,7 +53,8 @@ export default class SessionDetails extends React.Component {
 
     return (
       <div className='calendarContainer'>
-        <div className="title">{ `${ real_name } login details` }</div>
+        <div className="title">{ `Login Details of ${ real_name }` }</div>
+        <hr />
         { this.renderSessionDetails() }
         <DayPicker
           month={ selectedDays[0] }

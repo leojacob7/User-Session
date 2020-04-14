@@ -1,8 +1,17 @@
 .calendarContainer {
     width: 400px;
-    background: yellow;
+    background: beige;
+    padding: 20px;
 }
 
 .dayPicker {
-    padding: 20px;
+    padding: 30px;
+}
+
+.title {
+    font-size: x-large;
+}
+
+.activityContainer {
+    margin-top: 10px;
 }
