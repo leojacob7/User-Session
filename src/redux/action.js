@@ -29,7 +29,7 @@ export const fetchUsers = () => {
     return (dispatch) => {
       dispatch(fetchUser())
       axios
-        .get('http://localhost:3001/members')
+        .get('http://localhost:3000/members')
         .then(response => {
           // response.data is the users
           const users = response.data

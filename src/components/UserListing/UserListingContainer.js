@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserListing from './UserListing';
-import Example from '../Modal/Example'
+import SessionDetails from '../Modal/SessionDetails'
+import './styles.scss'; 
 
 class UserListingContainer extends Component {
     constructor(props) {
@@ -18,10 +19,9 @@ class UserListingContainer extends Component {
         const { userData } = this.props;
         const { data } = this.state;
         return (
-            <div>
-                { data === '' ? <UserListing userData={ userData } getUser={ (rowData) => this.getUserData(rowData) }/>:
-                <Example modalData={ data } open/>
-                } 
+            <div className="contentWrapper">
+                <UserListing userData={ userData } getUser={ (rowData) => this.getUserData(rowData) }/>
+                 { data !== '' && <SessionDetails modalData={ data } open/> }
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid'
-import Example from '../Modal/Example'
+import Example from '../Modal/SessionDetails'
 import MaterialTable from 'material-table'
 import Button from '@material-ui/core/Button';
 
@@ -12,44 +12,47 @@ class UserListing extends Component {
 
       getUserAction = (data) => {
           const { getUser, userData } =  this.props
-          const selectedUser = userData.filter(data => userData.real_name === data.real_name)
-          console.log("selectedUser1 ",userData.real_name);
-          console.log("selectedUser ",selectedUser);
-          
-          getUser( selectedUser );
+          const selectedUser = userData.filter(obj => obj.real_name === data.name)
+          getUser( selectedUser[0] );
       }
 
     render() {
         const { userData } = this.props;        
         const collatedData = this.parseData(userData);
             return (
-                <div>
+                <div className="userListingContainer">
                     <MaterialTable
+                    count={ 10 }
+                    paginationType='we'
                     columns={[
                         { title: 'Name', field: 'name' },
                     ]}
                     data={collatedData}
-                    title="User Data"
+                    title="Session Details"
                     actions={[
                         {
-                          icon: 'save',
+                          icon: 'Search',
                           tooltip: 'Save User',
                           onClick: (event, rowData) => this.getUserAction(rowData)
                         }
                       ]}
                     components={{
-                        Action: props => (
+                        Action: props => { 
+                          const styles = { textTransform: 'none', margin: '10px 0px' };
+                          return (
                           <Button
                             onClick={(event) => props.action.onClick(event, props.data) }
                             color="primary"
                             variant="contained"
-                            style={{textTransform: 'none'}}
+                            style={ styles }
                             size="small"
                           >
-                            Details
+                             Get Details
                           </Button>
-                        ),
-                      }}
+                        ) },
+                        Pagination: props => (
+                         null
+                      )}}
                     />  
                 </div>
             );
