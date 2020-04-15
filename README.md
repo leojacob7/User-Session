@@ -1,5 +1,9 @@
 ## This is a scalable app driven by a mock json-server api running on heroku
+Fake api is returned in https://another-user-session.herokuapp.com/members
+URL for the application is https://fathomless-sands-62878.herokuapp.com/
+
 The mock api is consumed by making a get request from axios
+
 The state is handled by redux and redux thunk and connected with the react component.
 
 ## Available Scripts
