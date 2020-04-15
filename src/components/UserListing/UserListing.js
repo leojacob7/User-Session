@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid'
-import Example from '../Modal/SessionDetails'
 import MaterialTable from 'material-table'
 import Button from '@material-ui/core/Button';
 
