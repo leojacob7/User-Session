@@ -3,7 +3,7 @@ import 'react-responsive-modal/styles.css';
 import "react-responsive-modal/styles.css";
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
-import { newDate, dateSortSasc } from '../../Utils'
+import { newDate, dateSortSasc } from '../../Utilities/Utils'
 import './styles.scss'; 
  
 export default class SessionDetails extends React.Component {
