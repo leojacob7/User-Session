@@ -54,6 +54,7 @@ export default class SessionDetails extends React.Component {
     return (
       <div className='calendarContainer'>
         <div className="title">{ `Login Details of ${ real_name }` }</div>
+        <p className="disclaimer">* Click on selected date to see the login details</p>
         <hr />
         { this.renderSessionDetails() }
         <DayPicker
